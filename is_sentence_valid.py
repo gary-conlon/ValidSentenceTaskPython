@@ -8,17 +8,17 @@
 # String has no period characters other than the last character.
 # Numbers below 13 are spelled out (”one”, “two”, "three”, etc…).
 #
-def isSentenceValid(sentence: str):
+def is_sentence_valid(sentence: str):
     # Using guard clauses filter the sentence
 
     # Check if the sentence has a full stop other than the last character
-    if ("." in sentence[:-1]):
+    if "." in sentence[:-1]:
         return False
 
     # Check if the number in the sentence is numeric or text
-    if not (isNumeric(sentence)):
+    if not (is_numeric(sentence)):
         return False
-    
+
     # Check if the first letter is uppercase
     if not (sentence[0].isupper()):
         return False
@@ -28,18 +28,19 @@ def isSentenceValid(sentence: str):
         return False
 
     # Check if the " count is even
-    if ((sentence.count('"') % 2) != 0):
+    if (sentence.count('"') % 2) != 0:
         return False
 
     # If nothing has returned false the sentence is valid.
 
     return True
 
+
 # Method that check if a string contains a number then ensure it is less than 13
-def isNumeric(txt):
+def is_numeric(txt):
     txt = txt.replace(',', '')
     # Check to see if the string contains any digits
-    if(any(i.isdigit() for i in txt)):
+    if any(i.isdigit() for i in txt):
         # Loop through the text and add to list if there is a digit
         my_list = [int(s) for s in txt.split() if s.isdigit()]
         # Check all digits and ensure none are less than 13
@@ -51,26 +52,27 @@ def isNumeric(txt):
     else:
         return True
 
-validSentences = [
-        'The quick brown fox said "hello Mr lazy dog".',
-        'The quick brown fox said hello Mr lazy dog.',
-        'One lazy dog is too few, 13 is too many.',
-        'One lazy dog is too few, thirteen is too many.',
-        'How many "lazy dogs" are there?']
 
-invalidSentences = [
-        'The quick brown fox said "hello Mr. lazy dog".',
-        'the quick brown fox said "hello Mr lazy dog".',
-        '"The quick brown fox said "hello Mr lazy dog."',
-        'One lazy dog is too few, 12 is too many.',
-        'Are there 11, 12, or 13 lazy dogs?',
-        'There is no punctuation in this sentence']        
+valid_sentences = [
+    'The quick brown fox said "hello Mr lazy dog".',
+    'The quick brown fox said hello Mr lazy dog.',
+    'One lazy dog is too few, 13 is too many.',
+    'One lazy dog is too few, thirteen is too many.',
+    'How many "lazy dogs" are there?']
+
+invalid_sentences = [
+    'The quick brown fox said "hello Mr. lazy dog".',
+    'the quick brown fox said "hello Mr lazy dog".',
+    '"The quick brown fox said "hello Mr lazy dog."',
+    'One lazy dog is too few, 12 is too many.',
+    'Are there 11, 12, or 13 lazy dogs?',
+    'There is no punctuation in this sentence']
 
 # Loop through test sentences
-for i in validSentences:
-    print(i + " is " + str(isSentenceValid(i)))
+for i in valid_sentences:
+    print(i + " is " + str(is_sentence_valid(i)))
 
 print("\n")
 
-for i in invalidSentences:
-    print(i + " is " + str(isSentenceValid(i)))    
+for i in invalid_sentences:
+    print(i + " is " + str(is_sentence_valid(i)))
