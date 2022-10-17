@@ -14,7 +14,9 @@ def test_ensure_invalid_sentences_fail():
         '"The quick brown fox said "hello Mr lazy dog."',
         'One lazy dog is too few, 12 is too many.',
         'Are there 11, 12, or 13 lazy dogs?',
-        'There is no punctuation in this sentence']
+        'There is no punctuation in this sentence',
+        'Are there 11,12 lazy dogs?',
+        '9,8.','A 9 ?','"13?', 'a13?', '!A13?git ', 'A 13,12,11,13?', '""']
 
     for invalid_sentence in invalid_sentences:
         assert is_sentence_valid(invalid_sentence) == False

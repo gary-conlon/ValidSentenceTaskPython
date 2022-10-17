@@ -38,7 +38,8 @@ def is_sentence_valid(sentence: str):
 
 # Method that check if a string contains a number then ensure it is less than 13
 def is_numeric(txt):
-    txt = txt.replace(',', '')
+    txt = txt.replace(',', ' ')
+    is_number = True
     # Check to see if the string contains any digits
     if any(i.isdigit() for i in txt):
         # Loop through the text and add to list if there is a digit
@@ -46,9 +47,8 @@ def is_numeric(txt):
         # Check all digits and ensure none are less than 13
         for i in my_list:
             if i < 13:
-                return False
-            else:
-                return True
+                is_number = False
+        return is_number
     else:
         return True
 
